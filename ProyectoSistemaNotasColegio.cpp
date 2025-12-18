@@ -100,9 +100,9 @@ class Profesor:public Persona{
 	public:
 		Profesor();
 		Profesor(string, string, string, string);
-		string getCurso();
+		string getcurso();
 		void setcurso(string);		
-		void vercurso();
+		void mostrarDatos();
 };
 Profesor::Profesor():Persona(){
 	curso="Sin registro";
@@ -110,13 +110,14 @@ Profesor::Profesor():Persona(){
 Profesor::Profesor(string d, string n, string ap, string c) : Persona(d, n, ap){
     curso = c;
 }
-string Profesor::getCurso(){
+string Profesor::getcurso(){
 	return curso;
 }
-void Profesor::setCurso(string c){
+void Profesor::setcurso(string c){
 	curso=c;
 }
-void Profesor::vercurso(){
+void Profesor::mostrarDatos(){
+	Persona::mostrarDatos();
     cout<<"Curso: "<<curso<<endl;
 }
 
@@ -165,9 +166,10 @@ class Asistencia{
 void menuestudiante();
 void loginestudiante(){
 	
+	menuestudiante();
 }
 void menuestudiante(){
-	char opcionmenu;
+	char opcionestudiante;
 	do{
         cout<<"--- SISTEMA DE NOTAS DE COLEGIO ---"<<endl;
         cout<<"Ingrese opción de usuario: "<<endl;
@@ -176,9 +178,9 @@ void menuestudiante(){
         cout<<"C. Ver notas: "<<endl;
         cout<<"D. Sacar reporte: "<<endl;
         cout<<"X. Salir"<<endl;;
-        cin>>opcionmenu;
-        opcionmenu=toupper(opcionmenu);
-        switch(opcionmenu){
+        cin>>opcionestudiante;
+        opcionestudiante=toupper(opcionestudiante);
+        switch(opcionestudiante){
             case 'A':
                 cout<<"Datos de estudiante"<<endl;
                 //Estudiante::mostrarDatos();
@@ -201,15 +203,47 @@ void menuestudiante(){
             default:
                 cout<<"ERROR. Opcion ingresada no disponible"<<endl;
         }
-    }while(opcionmenu!='X');	
+    }while(opcionestudiante!='X');	
 }
+
 void menuprofesor();
 void loginprofesor(){
 	
+	menuprofesor();
 }
 void menuprofesor(){
-	
+	char opcionprofesor;
+    do{
+        cout<<"\n--- MENU DOCENTE ---"<<endl;
+        cout<<"A. Ver mis datos"<<endl;
+        cout<<"B. Ver curso asignado"<<endl;
+        cout<<"C. Ingresar notas (Simulado)"<<endl;
+        cout<<"X. Regresar"<<endl;
+        cout<<"Opcion: "<<endl;
+        cin>>opcionprofesor;
+        opcionprofesor=toupper(opcionprofesor);
+        switch(opcionprofesor){
+            case 'A':
+                cout<<"Datos del profesor"<<endl;
+                
+                break;
+            case 'B':
+                cout<<"Curso asignado"<<endl;
+                
+                break;
+            case 'C':
+                cout<<"Ingresar notas..."<<endl;
+                
+                break;
+            case 'X':
+                cout<<"Saliendo del menu profesor"<<endl;
+                break;
+            default:
+                cout<<"ERROR. Opcion no valida"<<endl;
+        }
+    }while(opcionprofesor!='X');
 }
+
 void menuprincipal(){
 	char opcionmenu;
 	do{
@@ -239,7 +273,8 @@ void menuprincipal(){
 }
 
 int main (){
-	Estudiante estudiante1;
+	Estudiante estudiante1("77777777", "Juan", "Perez", "U2024", "5to");
+    Profesor profesor1("12345678", "Alberto", "Einstein", "Fisica Cuantica");
 	menuprincipal();
 	
 	return 0;
