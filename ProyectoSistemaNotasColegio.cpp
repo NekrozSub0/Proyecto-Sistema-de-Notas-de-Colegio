@@ -163,12 +163,12 @@ class Asistencia{
 };
 
 //Funciones para menus
-void menuestudiante();
-void loginestudiante(){
+void menuestudiante(Estudiante estudiante1, Profesor profesor1);
+void loginestudiante(Estudiante estudiante1, Profesor profesor1){
 	
-	menuestudiante();
+	menuestudiante(estudiante1, profesor1);
 }
-void menuestudiante(){
+void menuestudiante(Estudiante estudiante1, Profesor profesor1){
 	char opcionestudiante;
 	do{
         cout<<"--- SISTEMA DE NOTAS DE COLEGIO ---"<<endl;
@@ -183,7 +183,7 @@ void menuestudiante(){
         switch(opcionestudiante){
             case 'A':
                 cout<<"Datos de estudiante"<<endl;
-                //Estudiante::mostrarDatos();
+				estudiante1.mostrarDatos();
                 break;
             case 'B':
                 cout<<"Asistencia de estudiante: "<<endl;
@@ -206,12 +206,12 @@ void menuestudiante(){
     }while(opcionestudiante!='X');	
 }
 
-void menuprofesor();
-void loginprofesor(){
+void menuprofesor(Estudiante estudiante1, Profesor profesor1);
+void loginprofesor(Estudiante estudiante1, Profesor profesor1){
 	
-	menuprofesor();
+	menuprofesor(estudiante1, profesor1);
 }
-void menuprofesor(){
+void menuprofesor(Estudiante estudiante1, Profesor profesor1){
 	char opcionprofesor;
     do{
         cout<<"\n--- MENU DOCENTE ---"<<endl;
@@ -225,7 +225,7 @@ void menuprofesor(){
         switch(opcionprofesor){
             case 'A':
                 cout<<"Datos del profesor"<<endl;
-                
+                profesor1.mostrarDatos();
                 break;
             case 'B':
                 cout<<"Curso asignado"<<endl;
@@ -244,7 +244,7 @@ void menuprofesor(){
     }while(opcionprofesor!='X');
 }
 
-void menuprincipal(){
+void menuprincipal(Estudiante estudiante1, Profesor profesor1){
 	char opcionmenu;
 	do{
         cout<<"--- SISTEMA DE NOTAS DE COLEGIO ---"<<endl;
@@ -257,11 +257,11 @@ void menuprincipal(){
         switch(opcionmenu){
             case 'A':
                 cout<<"Ingrese sus credenciales de estudiante"<<endl;
-                loginestudiante();
+                loginestudiante(estudiante1, profesor1);
                 break;
             case 'B':
                 cout<<"Ingrese sus credenciales de profesor"<<endl;
-                loginprofesor();
+                loginprofesor(estudiante1, profesor1);
                 break;
             case 'X':
                 cout<<"Cerrando programa..."<<endl;
@@ -275,7 +275,7 @@ void menuprincipal(){
 int main (){
 	Estudiante estudiante1("77777777", "Juan", "Perez", "U2024", "5to");
     Profesor profesor1("12345678", "Alberto", "Einstein", "Fisica Cuantica");
-	menuprincipal();
+	menuprincipal(estudiante1, profesor1);
 	
 	return 0;
 }
